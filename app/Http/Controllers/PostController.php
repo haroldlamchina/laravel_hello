@@ -16,7 +16,7 @@ class PostController extends Controller
     public function show()
     {
         $title='hello word';
-        return view("post/show",compact('title'));
+        return view("post/show",['title'=>'hool']);
     }
     //创建文章页
     public function create()
