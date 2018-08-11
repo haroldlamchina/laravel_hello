@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use \App\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -10,7 +11,8 @@ class PostController extends Controller
     //列表
     public function index()
     {
-        return view('post/index');
+        $posts=Post::orderBy('created_at','desc')->paginate(6);
+        return view('post/index',compact("posts"));
     }
     //文章详情页
     public function show()
