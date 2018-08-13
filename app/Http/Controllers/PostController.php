@@ -53,18 +53,33 @@ class PostController extends Controller
 
     }
     //文章编辑页面
-    public function edit()
+    public function edit(Post $post)
     {
-        return view("post/edit");
+        return view("post/edit",compact("post"));
     }
     //文章编辑保存
-    public function update()
+    public function update(Post $post)
     {
+        //验证
+        $this->validate(request(),[
+            'title'=>"required|string|min:5|max:100",
+            'content'=>"required|string|min:10",
+        ]);
+        //逻辑
+        $post->title=request("title");
+        $post->content=request("content");
+        $post->save();
+        //渲染
+        return redirect("/posts/{$post->id}");
 
     }
     //文章删除操作
-    public function delete()
+    public function delete(Post $post)
     {
+        // TODO 用户权限验证
+
+        $post->delete();
+        return redirect("/posts");
 
     }
 

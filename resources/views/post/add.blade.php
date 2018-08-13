@@ -15,15 +15,8 @@
                 <div id="editor">
                 </div>
                 <textarea id="content" style="width:100%; height:200px;display: none" name="content" ></textarea>
-                @if($errors->any())
-                <div class="alert alert-danger">
-                   <ul>
-                       @foreach($errors->all() as $error)
-                       <li>{{$error}}</li>
-                       @endforeach
-                   </ul>
-                </div>
-                @endif
+                @include("layout.error")
+
                 <button type="submit" class="btn btn-default">提交</button>
             </form>
             <br>
