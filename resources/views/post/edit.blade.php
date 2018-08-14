@@ -11,7 +11,7 @@
                 <div id="editor">
                     {!!$post->content!!}
                 </div>
-                <textarea id="content" style="width:100%; height:200px;" name="content" >{!!$post->content!!}</textarea>
+                <textarea id="content" style="width:100%; height:200px;display: none" name="content" >{!!$post->content!!}</textarea>
                 @include("layout.error")
                 <button type="submit" class="btn btn-default">提交</button>
             </form>

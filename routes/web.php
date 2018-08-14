@@ -19,6 +19,8 @@
 Route::get('/login','\App\Http\Controllers\LoginController@index');
 //用户登陆行为
 Route::post('/login','\App\Http\Controllers\LoginController@login');
+//登出行为
+Route::get('/logout','\App\Http\Controllers\LoginController@logout');
 //用户注册页面
 Route::get('/register','\App\Http\Controllers\RegisterController@index');
 //注册行为
