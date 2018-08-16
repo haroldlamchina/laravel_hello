@@ -14,4 +14,9 @@ class Post extends Model
     {
         return $this->belongsTo('App\User');
     }
+    //关联评论
+    public function comment()
+    {
+        return $this->hasMany('App\Comment','post_id','id')->orderBy('created_at','desc');
+    }
 }

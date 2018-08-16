@@ -47,4 +47,8 @@ Route::get('/posts/{post}/delete','\App\Http\Controllers\PostController@delete')
 Route::post('/posts/img/upload','\App\Http\Controllers\PostController@imgUpload');
 
 
+//评论行文
+Route::post('/posts/{post}/comment','\App\Http\Controllers\PostController@comment');
+
+
 

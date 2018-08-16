@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use \App\Post;
 use Illuminate\Http\Request;
 
@@ -15,12 +16,14 @@ class PostController extends Controller
         //$log=$app->make("log");
 //        \Log::info('testlog',['post'=>'list2']);
 
-        $posts=Post::orderBy('created_at','desc')->paginate(6);
+        $posts=Post::orderBy('created_at','desc')->withCount('comment')->paginate(6);
         return view('post/index',compact("posts"));
     }
     //文章详情页
     public function show(Post $post)
     {
+        //预加载comment  使得view层不再抓取数据库
+        $post->load('comment');
         return view("post/show",compact("post"));
     }
     //创建文章页
@@ -122,6 +125,26 @@ class PostController extends Controller
             'errno'=>$errnoCode,
             'data'=>array(asset('storage/'.$path)),
         );
+
+    }
+
+    //文章评论
+    public function comment(Post $post)
+    {
+
+        //验证
+        $this->validate(request(),[
+           'content'=>'required|min:5'
+        ]);
+
+        //逻辑
+        $comment=new Comment();
+        $comment->user_id=\Auth::id();
+        $comment->content=request('content');
+        $post->comment()->save($comment);
+        //渲染
+        return back();
+
 
     }
 }
