@@ -11,9 +11,9 @@
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
+Route::get('/', function () {
+    return view('login.index');
+});
 
 //用户登陆页面
 Route::get('/login','\App\Http\Controllers\LoginController@index');

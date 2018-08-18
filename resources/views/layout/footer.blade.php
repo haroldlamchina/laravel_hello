@@ -1,5 +1,5 @@
 <footer class="blog-footer">
-    <p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+    <p><a href="http://www.miibeian.gov.cn/">闽ICP备15023814号 </a></p>
     <p>
         <a href="#">Back to top</a>
     </p>
