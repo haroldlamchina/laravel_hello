@@ -29,6 +29,6 @@ class RegisterController extends Controller
         User::create(compact('name','email','password'));
 
         //渲染
-        return redirect("/posts");
+        return redirect("/login");
     }
 }
