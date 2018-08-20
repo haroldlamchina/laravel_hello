@@ -167,7 +167,7 @@ class PostController extends Controller
     //取消赞行为
     public function unzan(Post $post)
     {
-        $post->zan(\auth::id())->delete();
+        $post->zan(\Auth::id())->delete();
         return back();
     }
 
