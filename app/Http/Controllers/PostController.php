@@ -17,7 +17,7 @@ class PostController extends Controller
         //$log=$app->make("log");
 //        \Log::info('testlog',['post'=>'list2']);
 
-        $posts=Post::orderBy('created_at','desc')->withCount('comment')->paginate(6);
+        $posts=Post::orderBy('created_at','desc')->withCount(['comment','zans'])->paginate(6);
         return view('post/index',compact("posts"));
     }
     //文章详情页
