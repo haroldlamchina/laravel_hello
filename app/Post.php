@@ -3,9 +3,26 @@
 namespace App;
 
 use \App\Model;
+use Laravel\Scout\Searchable;
 
 class Post extends Model
 {
+
+    use Searchable;
+    //定义es里面的type
+    public function searchableAs()
+    {
+        return "post";
+    }
+    //定义搜索字段
+    public function toSearchableArray()
+    {
+        return [
+            'title'=>$this->title,
+            'content'=>$this->content,
+        ];
+    }
+
     //
     //protected $guarded=[];
     //protected $fillable=['title','content'];
