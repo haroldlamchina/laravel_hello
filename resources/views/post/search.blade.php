@@ -13,5 +13,6 @@
                 <p>{{str_limit($post->content,'100','...')}}</p>
             </div>
             @endforeach
+            {{$posts->links()}}
         </div><!-- /.blog-main -->
 @endsection
