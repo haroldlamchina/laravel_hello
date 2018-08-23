@@ -22,3 +22,48 @@ editor.customConfig.uploadFileName = 'imgbylam';
 editor.create();
 // 初始化 textarea 的值
 // $content.val(editor.txt.html())
+$.ajaxSetup({
+    headers:{
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+$(".like-button").click(function(event){
+    var curtarget=$(event.target);
+    var curuser_id=curtarget.attr('like-user');
+    var cur_value=curtarget.attr('like-value');
+    if(cur_value=='1')
+    {
+        $.ajax({
+            'url':'/user/'+curuser_id+'/unfan',
+            'dataType':'json',
+            'method':'POST',
+            'success':function(res){
+                    if(res.error){
+                        alert(res.msg);
+                        return;
+                    }
+                    curtarget.attr('like-value','0');
+                    curtarget.text('关注');
+            }
+
+        })
+
+    }else{
+        $.ajax({
+            'url':'/user/'+curuser_id+'/fan',
+            'dataType':'json',
+            'method':'POST',
+            'success':function(res){
+                if(res.error){
+                    alert(res.msg);
+                    return;
+                }
+                curtarget.attr('like-value','1');
+                curtarget.text('取消关注');
+            }
+
+        })
+
+    }
+});

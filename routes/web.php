@@ -60,6 +60,14 @@ Route::get('/posts/{post}/zan','\App\Http\Controllers\PostController@zan');
 //取消赞行为
 Route::get('/posts/{post}/unzan','\App\Http\Controllers\PostController@unzan');
 
+//个人中心页面
+Route::get('/user/{user}','\App\Http\Controllers\UserController@show');
+//关注某人
+Route::post('/user/{user}/fan','\App\Http\Controllers\UserController@fan');
+
+//取消关注某人
+Route::post('/user/{user}/unfan','\App\Http\Controllers\UserController@unfan');
+
 
 
 
